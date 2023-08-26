@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <title>JSON</title>
+</head>
+<body>
+    <h1>javascript objects vs JSON</h1>
+    <p>With javascript object we can store function and key doesn't need to be in double qoute.</p>
+    <p>JSON cant be stored function and key value both should have double quotes and its used universal to store the data.
+    </p>
+</body>
+<script>
+    let javascriptObj = {
+        name : 'Suber',
+        age : 25,
+        education : {
+            dip : 70,
+            passed : true
+        },
+        fun: function toCalAge(year){
+            const age = 2023 - year 
+            alert('Your age is ',age)
+        }
+    };
+
+   const jsonjs = {
+    "name":"Suber",
+    "age" : 25,
+    "edu" : {
+        "dip" : 70,
+    }
+   }
+    console.log(javascriptObj);
+    console.log(jsonjs)
+
+    //JSON.stringify converts object to json
+    console.log(JSON.stringify(javascriptObj));
+
+    //JSON.parse is converts json to object
+    //console.log(JSON.parse(jsonjs))
+    
+    //localstorage
+    localStorage.setItem('messege', JSON.stringify(javascriptObj));
+    console.log(localStorage.getItem('messege'));
+    localStorage.removeItem('messege')
+</script>
+</html>

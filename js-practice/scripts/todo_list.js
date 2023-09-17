@@ -32,7 +32,14 @@ document.querySelector('.js-todo-list').innerHTML = htmlTodo;
 function addTodo(){
     const inputElement = document.querySelector('.js-todo-input')
     const name = inputElement.value;
-    todoList.push(name)
+    const inputDueDate = document.querySelector('.js-todo-input-date')
+    const dueDate = inputDueDate.value;
+    todoList.push({
+       // name: name,
+        //dueDate: dueDate
+        name,dueDate
+    })
     inputElement.value = '';
+    inputDueDate.value = '';
     renderHtmlTodo();
 }

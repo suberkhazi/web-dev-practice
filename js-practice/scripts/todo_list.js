@@ -15,17 +15,15 @@ for(let i=0; i<todoList.length; i++){
    // const dueDate = todoObject.dueDate;
    const {name, dueDate} = todoObject; // destructoring
     const html = `
-    <p>
-    ${name} ${dueDate} 
-    <button onclick="
+    <div>${name}</div>
+    <div>${dueDate}</div> 
+    <button class="delete-button" onclick="
     todoList.splice(${i}, 1);
     renderHtmlTodo();
     ">Delete</button>
-    </p>
     `;
     htmlTodo += html;
 }
-console.log(htmlTodo);
 document.querySelector('.js-todo-list').innerHTML = htmlTodo;
 }
 
@@ -34,11 +32,15 @@ function addTodo(){
     const name = inputElement.value;
     const inputDueDate = document.querySelector('.js-todo-input-date')
     const dueDate = inputDueDate.value;
+    if(dueDate === '' || name === ''){
+        alert('Cannot be empty')
+    }else{
     todoList.push({
        // name: name,
         //dueDate: dueDate
         name,dueDate
     })
+}
     inputElement.value = '';
     inputDueDate.value = '';
     renderHtmlTodo();

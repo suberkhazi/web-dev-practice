@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async functions demo</title>
+</head>
+<body>
+    <h1>This is demo code</h1>
+    <button id="stop">Stop</button>
+    
+</body>
+<script> 
+//SetTimeout executes after given interval time
+    // setTimeout(function(){
+    //     console.log('hey')
+    // }, 2000)
+    const displayName = function(){
+        const stop = document.querySelector('h1').innerHTML = 'This is changed code'
+    }
+    const stopthetime = setTimeout(displayName, 2000)
+
+    const stop = document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(stopthetime)
+        console.log('stop')
+    })
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+</head>
+<body>
+    <div id="newDiv">
+    <h1>Hey this is some random text</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</div>
+</body>
+<script>
+//     //basic example of setInterval
+//     const disp = function(str, num){
+//         console.log('hey', str, num)
+//     }
+//    const iter= setInterval(disp, 2000, 'Parameter', 2)
+//    clearInterval(iter)
+
+// when click on start display some text and click on stop it stops showing
+
+const start = document.getElementById('start')
+const stop = document.getElementById('stop')
+
+start.addEventListener('click', function(){
+   const disp = function(){
+    const para = document.createElement("p");
+    const text = document.createTextNode('This is new node');
+    para.appendChild(text);
+    const divv = document.querySelector('#newDiv')
+    divv.appendChild(para)
+    console.log('run')
+   }
+   const display = setInterval(disp, 1000);
+
+   stop.addEventListener('click', function(){
+    clearInterval(display)
+    
+   })
+})
+
+</script>
+</html>

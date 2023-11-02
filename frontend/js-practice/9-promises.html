@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise practice</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // first approach
+    const myPromise = new Promise(function(resolve, reject){
+        //do async task
+        setTimeout(function(){
+            console.log('Async task completed');
+            resolve() //mandatory to connect to consumption
+        }, 3000)
+    })
+
+    myPromise.then(function(){
+        console.log('promise fulfilled');
+    })
+
+    // second approach without variable
+    new Promise(function(resolve, reject){
+        setTimeout(function(){
+            console.log('second promise');
+            resolve()
+        },4000)
+    }).then(function(){
+        console.log('second promise fulfilled');
+    })
+
+    //third approach by passing values to resolve
+    const thirdPromise = new Promise(function(resolve, reject){
+        setTimeout(function(){
+            resolve({username : 'suber', email : 'suber@exapmle.com'})
+        },6000)
+    })
+    thirdPromise.then(function(user){
+        console.log(user)
+    })
+
+    //fourth approach by using catch, finally keywords with error handling
+
+    const fourthPromise = new Promise(function(resolve, reject){
+        setTimeout(function(){
+            let error = false
+            if(error == false){
+                resolve({username: 'heyy', pass : '123'})
+            } else {
+                reject('Something went wrong')
+            }
+        },7000)
+    })
+
+    fourthPromise.then((user) => {
+        console.log(user)
+        return user.username
+    }).then((username) => console.log(username))
+    .catch(function(error){
+        console.log(error);
+    }).finally(() => console.log('we get something finally'))
+
+    //fifth approach using async await
+
+    const fifthPromise = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            let error = true
+            if(error == false){
+                resolve({data: 'abcd'})
+            } else {
+                reject('Something 5 wromg')
+            }
+        },8000)
+    })
+
+    async function consumePromiseFive(){
+        try {
+            const response = await fifthPromise
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    consumePromiseFive()
+
+    // without async await and using fetch
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error))
+
+
+</script>
+</html>
